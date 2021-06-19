@@ -25,50 +25,68 @@
         </style>
 </head>
 <body>
-<!--reportes-->
-<div class="card">
-  <div class="card-header">
-    Reporte de Alquiler
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      
-      <footer class="blockquote-footer"></footer>
-    </blockquote>
-  </div>
-</div>
 <br>
 <br>
-<div class="card">
-  <div class="card-header">
-    Libro de reclamos
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      
-      <footer class="blockquote-footer"></footer>
-    </blockquote>
-  </div>
-</div>
 <br>
 <br>
-<div class="card">
-  <div class="card-header">
-    Promociones del dia
+<!--Alquiler-->
+<div class="container border border-primary m-10 pb-10">
+  <div class="row">
+    <div class="col" style="background-color:#E7E8EA">
+      <div>
+            <br>
+            <img class="card-img" style="width: 100 rem" src="http://i2.cdn.turner.com/money/dam/assets/130423094442-tesla-model-s-620xa.jpg" alt="">
+      </div>
+      <div>
+        <h3><b> CARRO </b></h3>
+        <h5> $$$$$ </h5>
+      </div>
+    </div>
+    <div class="col">
+      <div class="text-align-left">
+            <br>
+            <h4><b>ALQUILER</b></h4>
+            <br>
+            <div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">lugar de entrega:</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                </div>
+            </div>
+            <br>
+            <div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Fecha de inicio</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                </div>
+            </div>
+            <br>
+            <div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Fecha de devolucion:</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                </div>
+            </div>
+            <br>
+            <button type="button" style="float: right" class="btn btn-success" onclick="{{ url('/home') }}">Reservar</button>
+            <br>
+            <br>
+            <br>
+            <br>
+      </div>
+    </div>
   </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      
-      <footer class="blockquote-footer"></footer>
-    </blockquote>
-  </div>
-</div>
+</div>  
 <br>
 <br>
-
+<br>
 <!--ETIQUETA-->
-<br>
-<br>
 <section class="" style="background-color:#000000">
             <div class="container">
                 <div class="row">
