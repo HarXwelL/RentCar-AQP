@@ -22,7 +22,10 @@ class OffersFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'provider_id' => $this->faker->sentence(),
+            'offer_name' => $this->faker->sentence(),
+            'date' => $this->faker->sentence(),
+            'discount' => $this->faker->sentence(),
         ];
     }
 }

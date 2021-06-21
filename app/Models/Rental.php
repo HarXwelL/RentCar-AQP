@@ -19,8 +19,8 @@ class Rental extends Model
         return $this->belongsTo('App\Models\Reviews');
     }
 
-    public function rental()
+    public function auto()
     {
-        return $this->belongsTo('App\Models\Rental');
+        return $this->belongsTo('App\Models\Auto');
     }
 }

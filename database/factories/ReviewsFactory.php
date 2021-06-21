@@ -22,7 +22,11 @@ class ReviewsFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' => $this->faker->sentence(),
+            'rental_id' => $this->faker->sentence(),
+            'qualification' => $this->faker->sentence(),
+            'comment' => $this->faker->sentence(),
+            'date' => $this->faker->sentence(),
         ];
     }
 }

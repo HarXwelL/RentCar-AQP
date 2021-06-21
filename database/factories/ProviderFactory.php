@@ -22,7 +22,9 @@ class ProviderFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'brand_provider' => $this->faker->sentence(),
+            'web_address' => $this->faker->sentence(),
+            'phone' => $this->faker->sentence(),
         ];
     }
 }

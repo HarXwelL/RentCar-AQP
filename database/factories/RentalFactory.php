@@ -22,7 +22,11 @@ class RentalFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' => $this->faker->sentence(),
+            'auto_id' => $this->faker->sentence(),
+            'payment_type' => $this->faker->sentence(),
+            'start_date' => $this->faker->sentence(),
+            'end_date' => $this->faker->sentence(),
         ];
     }
 }

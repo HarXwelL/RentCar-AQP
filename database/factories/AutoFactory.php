@@ -22,7 +22,11 @@ class AutoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'provider_id' => $this->faker->sentence(),
+            'color' => $this->faker->sentence(),
+            'capacity' => $this->faker->sentence(),
+            'plate_no' => $this->faker->sentence(),
+            'price' => $this->faker->sentence(),
         ];
     }
 }
