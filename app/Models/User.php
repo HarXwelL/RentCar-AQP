@@ -50,4 +50,13 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Rental');
     }
+
+    public function adminlte_image()
+    {
+        return 'https://picsum.photos/300/300';
+    }
+    public function adminlte_desc()
+    {
+        return 'administrador';
+    }
 }
