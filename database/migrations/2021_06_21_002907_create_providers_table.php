@@ -15,6 +15,9 @@ class CreateProvidersTable extends Migration
     {
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
+            $table->string('brand_provider');
+            $table->string('web_address')->unique();
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }

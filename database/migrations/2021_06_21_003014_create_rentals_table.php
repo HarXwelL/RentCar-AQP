@@ -15,7 +15,14 @@ class CreateRentalsTable extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('auto_id');
+            $table->string('payment_type');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('auto_id')->references('id')->on('autos');
         });
     }
 
