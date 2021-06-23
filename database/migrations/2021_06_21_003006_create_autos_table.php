@@ -17,7 +17,6 @@ class CreateAutosTable extends Migration
             $table->id();
             $table->unsignedBigInteger('provider_id');
             $table->string('color');
-            $table->string('image');
             $table->integer('capacity');
             $table->string('plate_no');
             $table->integer('price');

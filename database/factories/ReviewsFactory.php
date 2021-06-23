@@ -7,26 +7,16 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ReviewsFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
     protected $model = Reviews::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
     public function definition()
     {
         return [
-            'user_id' => $this->faker->sentence(),
-            'rental_id' => $this->faker->sentence(),
-            'qualification' => $this->faker->sentence(),
+            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
+            'rental_id' => \App\Models\Rental::inRandomOrder()->first()->id,
+            'qualification' => $this->faker->numberBetween($min = 1, $max = 5),
             'comment' => $this->faker->sentence(),
-            'date' => $this->faker->sentence(),
+            'date' => $this->faker->date($format = 'Y-m-d'),
         ];
     }
 }
