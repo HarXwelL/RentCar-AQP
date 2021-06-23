@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Post;
+use App\Models\Offers;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class AlquilerFactory extends Factory
+class OffersFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Post::class;
+    protected $model = Offers::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,10 @@ class AlquilerFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'provider_id' => $this->faker->sentence(),
+            'offer_name' => $this->faker->sentence(),
+            'date' => $this->faker->sentence(),
+            'discount' => $this->faker->sentence(),
         ];
     }
 }
