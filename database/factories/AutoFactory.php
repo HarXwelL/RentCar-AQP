@@ -22,11 +22,11 @@ class AutoFactory extends Factory
     public function definition()
     {
         return [
-            'provider_id' => $this->faker->sentence(),
-            'color' => $this->faker->sentence(),
-            'capacity' => $this->faker->sentence(),
-            'plate_no' => $this->faker->sentence(),
-            'price' => $this->faker->sentence(),
+            'provider_id' => \App\Models\Provider::inRandomOrder()->first()->id,
+            'color' => $this->faker->hexcolor(),
+            'capacity' => $this->faker->randomElement(['3', '4', '5']),
+            'plate_no' => $this->faker->bothify('?##-#??'),
+            'price' => $this->faker->numberBetween($min = 50, $max = 150),
         ];
     }
 }

@@ -22,11 +22,10 @@ class RentalFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->sentence(),
-            'auto_id' => $this->faker->sentence(),
-            'payment_type' => $this->faker->sentence(),
-            'start_date' => $this->faker->sentence(),
-            'end_date' => $this->faker->sentence(),
+            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
+            'auto_id' => \App\Models\Auto::inRandomOrder()->first()->id,
+            'payment_type' => $this->faker->randomElement(['cash', 'card', 'payPal']),
+            'start_date' => $this->faker->date($format = 'Y-m-d'),
         ];
     }
 }
