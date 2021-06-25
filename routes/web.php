@@ -40,9 +40,8 @@ Route::get('/admin/rental', function () {
 Route::get('/admin/users', function () {
     return view('administrador.Users');
 });
-Route::get('/admin/auto', function () {
-    return view('administrador.auto');
-});
+Route::get('/admin/auto', 'App\Http\Controllers\AutoController@index');
+
 Route::get('/admin/review', function () {
     return view('administrador.review');
 });
@@ -55,7 +54,7 @@ Route::get('/admin/offers', function () {
 
 Route::resource('Rental','App\Http\Controllers\RentalController');
 Route::resource('User','App\Http\Controllers\UserController');
-Route::resource('auto','App\Http\Controllers\AutoController');
+
 Route::resource('review','App\Http\Controllers\ReviewsController');
 Route::resource('provider','App\Http\Controllers\ProdviderController');
 Route::resource('offers','App\Http\Controllers\OffersController');

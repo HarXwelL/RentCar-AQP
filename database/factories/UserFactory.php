@@ -14,15 +14,11 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'user_type' => $this->faker->randomElement(['administrador', 'cliente']),
-            'last_name' => $this->faker->name(),
-            'image' => $this->faker->imageUrl($width = 640, $height = 480),
+            'user_type' => 'cliente',
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
-            'address' => $this->faker->streetAddress,
-            'phone' => $this->faker->tollFreePhoneNumber,
         ];
     }
 

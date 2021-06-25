@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Auto;
 
 class AutoController extends Controller
 {
     public function index()
     {
-        $autos = autos::all();
-
-        return view('administrador.autos')->with('autos');
+        $autos = Auto::all();
+        return view('administrador.auto', compact('autos'));
     }
     /**
      * Show the form for creating a new resource.
@@ -29,8 +29,6 @@ class AutoController extends Controller
      */
     public function store(Request $request)
     {
-        $autos = new autos();
-
         $autos->id = $request->get('id');
         $autos->provider_id = $request->get('provider_id');
         $autos->color = $request->get('color');
