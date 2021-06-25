@@ -24,47 +24,49 @@
         </style>
 </head>
 <body>
-    <div class="container">
-    <div class="row">
-        <div class="col-sm">
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Modelo</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                <option>Todo</option>
-                <option>Toyota</option>
-                <option>Hyundai</option>
-                <option>Honda</option>
-                <option>Nissan</option>
-                <option>Volkswagen</option>
-                </select>
+    <form class="form-inline">
+        <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1" type="search">Modelo</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Todo</option>
+                    <option>Toyota</option>
+                    <option>Hyundai</option>
+                    <option>Honda</option>
+                    <option>Nissan</option>
+                    <option>Volkswagen</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1" type="search">Precio</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Todo</option>
+                    <option>400 a 700</option>
+                    <option>700 a 1200</option>
+                    <option>1200  a mas</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1" type="search">Capacidad</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Todo</option>
+                    <option>2</option>
+                    <option>4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm">
+                <br>
+                <button class="btn btn-outline-info" type="submit">Buscar</button>
             </div>
         </div>
-        <div class="col-sm">
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Precio</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                <option>Todo</option>
-                <option>400 a 700</option>
-                <option>700 a 1200</option>
-                <option>1200  a mas</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Capacidad</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                <option>Todo</option>
-                <option>2</option>
-                <option>4</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-sm">
-            <br>
-            <button class="btn btn-outline-info" type="button">Buscar</button>
-        </div>
-    </div>
+    </form>
     <br>
     <!--contenido-->
 

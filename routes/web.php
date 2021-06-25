@@ -14,17 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('clientes.index');
-    
+    return view('clientes.index');  
 });
 Route::get('/administrador', function () {
     return view('administrador.index');
+});
+Route::get('/administrador/configuracion', function () {
+    return view('administrador.config');
 });
 Route::get('/autos', function () {
     return view('clientes.autos');
 });
 Route::get('/autos/alquiler', function () {
-    return view('clietnes.alquiler');
+    return view('clientes.alquiler');
 });
 Route::get('/autoalquiler', function () {
     return view('clientes.autoalquiler');
@@ -50,6 +52,14 @@ Route::get('/admin/provider', function () {
 Route::get('/admin/offers', function () {
     return view('administrador.offers');
 });
+
+Route::resource('Rental','App\Http\Controllers\RentalController');
+Route::resource('User','App\Http\Controllers\UserController');
+Route::resource('auto','App\Http\Controllers\AutoController');
+Route::resource('review','App\Http\Controllers\ReviewsController');
+Route::resource('provider','App\Http\Controllers\ProdviderController');
+Route::resource('offers','App\Http\Controllers\OffersController');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

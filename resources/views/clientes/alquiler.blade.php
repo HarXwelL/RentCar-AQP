@@ -31,58 +31,51 @@
 <br>
 <!--Alquiler-->
 <div class="container border border-primary m-10 pb-10">
-  <div class="row">
-    <div class="col" style="background-color:#E7E8EA">
-      <div>
+    @foreach ($autos as $auto)
+        <div class="row">
+            <div class="col" style="background-color:#E7E8EA">
+            <div>
+                    <br>
+                    <img class="card-img" style="width: 100 rem" src="http://i2.cdn.turner.com/money/dam/assets/130423094442-tesla-model-s-620xa.jpg" alt="">
+            </div>
+            <div>
+                <h3><b>{{ __('I NEED DBS') }}</b></h3>
+                <h5> $$$$$ </h5>
+            </div>
             <br>
-            <img class="card-img" style="width: 100 rem" src="http://i2.cdn.turner.com/money/dam/assets/130423094442-tesla-model-s-620xa.jpg" alt="">
-      </div>
-      <div>
-        <h3><b> CARRO </b></h3>
-        <h5> $$$$$ </h5>
-            <div>
-                <br>
-                <h5 class="text-align-left">Descripcion Opcional:</h5>
-                <h6>base de datos </h6>
-            </div>
-      </div>
-      <br>
-      <button type="button" style="float: right" class="btn btn-success" onclick="{{ url('/home') }}">Alquilar</button>
-      <br>
-      <br>
-    </div>
-    <div class="col">
-      <div class="text-align-left">
+            <button type="button" style="float: right" class="btn btn-success" href="/autos/alquiler">Alquilar</button>
             <br>
-            <h4><b>DESCRIPCION</b></h4>
             <br>
-            <div>
-                <h5 class="text-align-left">Modelo:</h5>
-                <h6>base de datos </h6>
             </div>
-            <div>
-                <h5 class="text-align-left">Capacidad:</h5>
-                <h6>base de datos </h6>
+            <div class="col">
+            <div class="text-align-left">
+                    <br>
+                    <h4><b>{{ __('DESCRIPTION') }}</b></h4>
+                    <br>
+                    <div>
+                        <h5 class="text-align-left">{{ __('Provider:') }}</h5>
+                        <h6>base de datos </h6>
+                    </div>
+                    <div>
+                        <h5 class="text-align-left">{{ __('Capacity:') }}</h5>
+                        <h6>base de datos </h6>
+                    </div>
+                    <div>
+                        <h5 class="text-align-left">{{ __('Color:') }}</h5>
+                        <h6>base de datos </h6>
+                    </div>
+                    <div>
+                        <h5 class="text-align-left">{{ __('Plate number') }}</h5>
+                        <h6>base de datos </h6>
+                    </div>
+                    <div>
+                        <h5 class="text-align-left">{{ __('Price') }}</h5>
+                        <h6>base de datos </h6>
+                    </div>
             </div>
-            <div>
-                <h5 class="text-align-left">Color:</h5>
-                <h6>base de datos </h6>
             </div>
-            <div>
-                <h5 class="text-align-left">Estado:</h5>
-                <h6>base de datos </h6>
-            </div>
-            <div>
-                <h5 class="text-align-left">Numero de Placa:</h5>
-                <h6>base de datos </h6>
-            </div>
-            <div>
-                <h5 class="text-align-left">Marca:</h5>
-                <h6>base de datos </h6>
-            </div>
-      </div>
-    </div>
-  </div>
+        </div>
+    @endforeach
 </div>  
 <br>
 <br>

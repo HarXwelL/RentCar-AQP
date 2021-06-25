@@ -23,4 +23,5 @@ class Rental extends Model
     {
         return $this->belongsTo('App\Models\Auto');
     }
+    protected $fillable = ['id', 'user_id', 'auto_id','payment_type','start_date'];
 }
