@@ -14,47 +14,10 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 <head>
-<section>
-    <form action="/administrador/offers" method="POST">
-    @csrf
-    @method('PUT')
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">id</span>
-      </div>
-      <input type="text" class="form-control" value="{{$offer->id}}" placeholder="id" aria-label="id" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">{{ __('Provider id') }}</span>
-      </div>
-      <input type="text" class="form-control" value="{{$offer->provider_id}}" placeholder="provider_id" aria-label="provider_id" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">{{ __('Offer name') }}</span>
-      </div>
-      <input type="text" class="form-control" value="{{$offer->offer_name}}" placeholder="offer_name" aria-label="offer_name" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">{{ __('Date') }}</span>
-      </div>
-      <input type="date" class="form-control" value="{{$offer->date}}" placeholder="date" aria-label="date" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">{{ __('Discount') }}</span>
-      </div>
-      <input type="text" class="form-control" value="{{$offer->discount}}" placeholder="discount" aria-label="discount" aria-describedby="basic-addon1">
-      </div>
-      <button href="/administrador/offer" class="float-right btn btn-primary">{{ __('Cancel') }}</button>
-      <button type="submit" class="float-right btn btn-success">{{ __('Add') }}</button>
-      <button class="float-right btn btn-info">{{ __('Report') }}</button>
-    </form>
-    <br>
-    <br>
-</section>  
+  <a href="Offers/create" class="btn btn-info">Create</a>
+ <br>
+ <br>
+
     <table class="table table-dark table-striped">
   <thead>
     <tr>
@@ -75,16 +38,18 @@
         <td>{{$offer->date}}</td>
         <td>{{$offer->discount}}</td>
         <td>
-          <form action="{{ route ('offer.destroy',$offer->id)}}" method="POST">
-            <button href="/administrador/{{ $offer->id }}" class="btn btn-primary">{{ __('Edit') }}</button>
-            <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
-          </form>  
+            <a href="{{ url('/Offers/'.$offer->id.'/edit') }}" class="btn btn-primary">{{ __('Edit') }}</a>
+            <form action="{{ url('/Offers/'.$offer->id ) }}" class="d-inline" method="post">
+            @csrf 
+            {{ method_field('DELETE') }}
+            <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
+            </form>
         </td>
       </tr>
     @endforeach
   </tbody>
 </table>
-
+{{ $offers->links() }}
 @stop
 
 @section('css')

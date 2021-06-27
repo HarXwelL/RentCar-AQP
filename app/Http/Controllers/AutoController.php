@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Auto;
+use Illuminate\Http\Request;
 
 class AutoController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $autos = Auto::all();
-        return view('administrador.auto', compact('autos'));
+        $autos['autos']=Auto::simplePaginate(10);
+
+        return view('administrador.auto',$autos);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -19,8 +26,9 @@ class AutoController extends Controller
      */
     public function create()
     {
-        
+        return view('create.createauto');
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -29,6 +37,23 @@ class AutoController extends Controller
      */
     public function store(Request $request)
     {
+        $fields=[
+            'id'=>'required|string|max:100',
+            'provider_id'=>'required|string|max:100',
+            'color'=>'required|string|max:100',
+            'capacity'=>'required|string|max:100',
+            'plate_no'=>'required|string|max:100',
+            'price'=>'required|string|max:100',
+        ];
+        $message=[
+            'required'=>'the :attribute required',
+        ];
+
+        $this->validate($request,$fields,$message);
+
+
+        $autos = new Auto();
+
         $autos->id = $request->get('id');
         $autos->provider_id = $request->get('provider_id');
         $autos->color = $request->get('color');
@@ -38,39 +63,42 @@ class AutoController extends Controller
 
         $autos->save();
 
-        return redirect('/administrador/auto');
+        return redirect('/auto');
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Auto  $auto
      * @return \Illuminate\Http\Response
      */
-    public function show(Discussion $id)
+    public function show(Auto $auto)
     {
         //
     }
-/**
+
+    /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Auto  $auto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Discussion $id)
+    public function edit($id)
     {
-        $auto = autos::find($id);
-        return view('administrador.auto')->with('auto',$auto);
+        $auto = Auto::find($id);
+        return view('edit.editauto')->with('auto',$auto);
     }
-/**
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Auto  $auto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Discussion $id)
+    public function update(Request $request, $id)
     {
-        $autos = autos::find($id);
+        $autos = Auto::find($id);
 
         $autos->provider_id = $request->get('provider_id');
         $autos->color = $request->get('color');
@@ -80,19 +108,18 @@ class AutoController extends Controller
 
         $autos->save();
 
-        return redirect('/administrador/auto');
+        return redirect('/auto');
     }
-/**
+
+    /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Auto  $auto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Discussion $id)
+    public function destroy($id)
     {
-        $autos = autos::find($id);
-        $autos->delete();
-        
-        return redirect('/administrador/auto');
+        Auto::destroy($id);
+        return redirect('auto');
     }
 }

@@ -263,28 +263,28 @@ return [
             'submenu' => [
                 [
                     'text' => 'Rental',
-                    'url'  => 'admin/rental',
+                    'url'  => 'Rental',
                 ],
                 [
                     'text'    => 'Users',
-                    'url'     => 'admin/users',
+                    'url'     => 'Users',
         
                 ],
                 [
                     'text' => 'Auto',
-                    'url'  => 'admin/auto',
+                    'url'  => 'auto',
                 ],
                 [
                     'text' => 'Reviews',
-                    'url'  => 'admin/review',
+                    'url'  => 'review',
                 ],
                 [
                     'text' => 'Provider',
-                    'url'  => 'admin/provider',
+                    'url'  => 'provider',
                 ],
                 [
                     'text' => 'Offers',
-                    'url'  => 'admin/offers',
+                    'url'  => 'Offers',
                 ],
             ],
         ],

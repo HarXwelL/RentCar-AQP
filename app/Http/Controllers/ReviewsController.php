@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reviews;
 use Illuminate\Http\Request;
 
 class ReviewsController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $reviews = reviews::all();
+        $reviews['reviews']=Reviews::simplePaginate(10);
 
-        return view('administrador.review')->with('reviews');
+        return view('administrador.review',$reviews);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -19,8 +26,9 @@ class ReviewsController extends Controller
      */
     public function create()
     {
-        
+        return view('create.createreview');
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -29,7 +37,22 @@ class ReviewsController extends Controller
      */
     public function store(Request $request)
     {
-        $reviews = new reviews();
+        $validate=[
+            'id'=>'required|string|max:100',
+            'user_id'=>'required|string|max:100',
+            'rental_id'=>'required|string|max:100',
+            'qualification'=>'required|string|max:100',
+            'comment'=>'required|string|max:100',
+            'date'=>'required|date',
+        ];
+
+        $message=[
+            'required'=>'the :attribute required',
+        ];
+
+        $this->validate($request,$validate,$message);
+
+        $reviews = new Reviews();
 
         $reviews->id = $request->get('id');
         $reviews->user_id = $request->get('user_id');
@@ -40,39 +63,42 @@ class ReviewsController extends Controller
 
         $reviews->save();
 
-        return redirect('/administrador/review');
+        return redirect('review');
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Reviews  $reviews
      * @return \Illuminate\Http\Response
      */
-    public function show(Discussion $id)
+    public function show(Reviews $reviews)
     {
         //
     }
-/**
+
+    /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Reviews  $reviews
      * @return \Illuminate\Http\Response
      */
-    public function edit(Discussion $id)
+    public function edit($id)
     {
-        $review = reviews::find($id);
-        return view('administrador.review')->with('review',$review);
+        $review = Reviews::find($id);
+        return view('edit.editreview')->with('review',$review);
     }
-/**
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Reviews  $reviews
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Discussion $id)
+    public function update(Request $request, $id)
     {
-        $review = reviews::find($id);
+        $reviews = Reviews::find($id);
 
         $reviews->user_id = $request->get('user_id');
         $reviews->rental_id = $request->get('rental_id');
@@ -83,19 +109,18 @@ class ReviewsController extends Controller
 
         $reviews->save();
 
-        return redirect('/administrador/review');
+        return redirect('/review');
     }
-/**
+
+    /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Reviews  $reviews
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Discussion $id)
+    public function destroy($id)
     {
-        $reviews = reviews::find($id);
-        $reviews->delete();
-        
-        return redirect('/administrador/review');
+        Reviews::destroy($id);
+        return redirect('review');
     }
 }

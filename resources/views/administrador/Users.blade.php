@@ -13,78 +13,15 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-<head>
-<section>
-    <form action="/administrador/Users" method="POST">
-    @csrf
-    @method('PUT')
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">ID</span>
-      </div>
-      <input type="text" class="form-control"  placeholder="id" aria-label="id" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">{{ __('Name') }}</span>
-      </div>
-      <input type="text" class="form-control"  placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">{{ __('User type') }}</span>
-      </div>
-      <input type="text" class="form-control"  placeholder="user_type" aria-label="user_type" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">{{ __('Last name') }}</span>
-      </div>
-      <input type="text" class="form-control"  placeholder="last_name" aria-label="last_name" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">{{ __('Image') }}</span>
-      </div>
-      <input type="image" class="form-control"  placeholder="image" aria-label="image" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">{{ __('Password') }}</span>
-      </div>
-      <input type="text" class="form-control"  placeholder="password" aria-label="password" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">{{ __('Address') }}</span>
-      </div>
-      <input type="text" class="form-control"  placeholder="address"  aria-label="address" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">{{ __('Phone') }}</span>
-      </div>
-      <input type="text" class="form-control"  placeholder="phone" aria-label="phone" aria-describedby="basic-addon1">
-      </div>
-      <button href="/administrador/Users" class="float-right btn btn-primary">{{ __('Cancel') }}</button>
-      <button type="submit" class="float-right btn btn-success">{{ __('Add') }}</button>
-      <button class="float-right btn btn-info">{{ __('Report') }}</button>
-    </form>
-    <br>
-    <br>
-</section>  
-    <table class="table table-dark table-striped">
+<head> 
+  <table class="table table-dark table-striped">
   <thead>
     <tr>
       <th scope="col">#id</th>
       <th scope="col">name</th>
       <th scope="col">user_type</th>
-      <th scope="col">last_name</th>
-      <th scope="col">image</th>
       <th scope="col">email</th>
       <th scope="col">password</th>
-      <th scope="col">address</th>
-      <th scope="col">phone</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -94,24 +31,22 @@
         <td>{{$user->id}}</td>
         <td>{{$user->name}}</td>
         <td>{{$user->user_type}}</td>
-        <td>{{$user->last_name}}</td>
-        <td>{{$user->image}}</td>
         <td>{{$user->email}}</td>
         <td>{{$user->password}}</td>
-        <td>{{$user->address}}</td>
-        <td>{{$user->phone}}</td>
         <td>
-          <form action="{{ route ('user.destroy',$user->id)}}" method="POST">
-            <button href="/administrador/{{ $user->id }}" class="btn btn-primary">{{ __('Edit') }}</button>
-            <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
-          </form>  
+            <a href="{{ url('/Users/'.$user->id.'/edit') }}" class="btn btn-primary">{{ __('Edit') }}</a>
+            <form action="{{ url('/Users/'.$user->id ) }}" class="d-inline" method="post">
+            @csrf 
+            {{ method_field('DELETE') }}
+            <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
+            </form>
         </td>
       </tr>
     @endforeach
   </tbody>
 </table>
 @stop
-
+{{ $users->links() }}
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop

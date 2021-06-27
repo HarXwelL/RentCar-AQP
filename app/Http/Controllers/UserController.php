@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users['users']=User::paginate(10);
+        $users['users']=User::simplePaginate(10);
 
         return view('administrador.Users',$users);
     }
@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        
+        return view('create.createusers');
     }
     /**
      * Store a newly created resource in storage.
@@ -35,14 +35,12 @@ class UserController extends Controller
         $users->id = $request->get('id');
         $users->name = $request->get('name');
         $users->user_type = $request->get('user_type');
-        $users->last_name = $request->get('last_name');
-        $users->image = $request->get('email');
-        $users->password = $request->get('address');
-        $users->phone = $request->get('phone');
+        $users->email = $request->get('email');
+        $users->password = $request->get('password');
 
         $users->save();
 
-        return redirect('/administrador/Users');
+        return redirect('Users');
     }
     /**
      * Display the specified resource.
@@ -60,10 +58,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Discussion $id)
+    public function edit($id)
     {
         $user = User::find($id);
-        return view('administrador.Users')->with('user',$user);
+        return view('edit.editusers')->with('user',$user);
     }
 /**
      * Update the specified resource in storage.
@@ -72,20 +70,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Discussion $id)
+    public function update(Request $request, $id)
     {
         $users = User::find($id);
 
         $users->name = $request->get('name');
         $users->user_type = $request->get('user_type');
-        $users->last_name = $request->get('last_name');
-        $users->image = $request->get('email');
-        $users->password = $request->get('address');
-        $users->phone = $request->get('phone');
+        $users->email = $request->get('email');
+        $users->password = $request->get('password');
 
         $users->save();
 
-        return redirect('/administrador/Users');
+        return redirect('/Users');
     }
 /**
      * Remove the specified resource from storage.
@@ -93,11 +89,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Discussion $id)
+    public function destroy($id)
     {
-        $users = User::find($id);
-        $users->delete();
-        
-        return redirect('/administrador/Users');
+        User::destroy($id);
+        return redirect('Users');
     }
 }

@@ -14,42 +14,10 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 <head>
-<section>
-    <form action="/administrador/provider" method="POST">
-    @csrf
-    @method('PUT')
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">id</span>
-      </div>
-      <input type="text" class="form-control" value="{{$provider->id}}" placeholder="id" aria-label="id" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">{{ __('Brand provider') }}</span>
-      </div>
-      <input type="text" class="form-control" value="{{$provider->brand_provider}}" placeholder="brand_provider" aria-label="brand_provider" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">{{ __('Web address') }}</span>
-      </div>
-      <input type="text" class="form-control" value="{{$provider->web_address}}" placeholder="web_address" aria-label="web_address" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">{{ __('Phone') }}</span>
-      </div>
-      <input type="text" class="form-control" value="{{$provider->phone}}" placeholder="phone" aria-label="phone" aria-describedby="basic-addon1">
-      </div>
-      <button href="/administrador/provider" class="float-right btn btn-primary">{{ __('Cancel') }}</button>
-      <button type="submit" class="float-right btn btn-success">{{ __('Add') }}</button>
-      <button class="float-right btn btn-info">{{ __('Report') }}</button>
-    </form>
-    <br>
-    <br>
-</section>  
-    <table class="table table-dark table-striped">
+  <a href="provider/create" class="btn btn-info">Create</a>
+ <br>
+ <br>
+  <table class="table table-dark table-striped">
   <thead>
     <tr>
       <th scope="col">#id</th>
@@ -67,16 +35,18 @@
         <td>{{$provider->web_address}}</td>
         <td>{{$provider->phone}}</td>
         <td>
-          <form action="{{ route ('provider.destroy',$provider->id)}}" method="POST">
-            <button href="/administrador/{{ $provider->id }}" class="btn btn-primary">{{ __('Edit') }}</button>
-            <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
-          </form>  
+            <a href="{{ url('/provider/'.$provider->id.'/edit') }}" class="btn btn-primary">{{ __('Edit') }}</a>
+            <form action="{{ url('/provider/'.$provider->id ) }}" class="d-inline" method="post">
+            @csrf 
+            {{ method_field('DELETE') }}
+            <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
+            </form>
         </td>
       </tr>
     @endforeach
   </tbody>
 </table>
-
+{{ $providers->links() }}
 @stop
 
 @section('css')

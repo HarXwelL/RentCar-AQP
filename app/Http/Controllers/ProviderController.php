@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Provider;
 use Illuminate\Http\Request;
 
 class ProviderController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $providers = providers::all();
+        $providers['providers']=Provider::simplePaginate(10);
 
-        return view('administrador.provider')->with('providers');
+        return view('administrador.provider',$providers);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -19,8 +26,9 @@ class ProviderController extends Controller
      */
     public function create()
     {
-        
+        return view('create.createprovider');
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -29,7 +37,20 @@ class ProviderController extends Controller
      */
     public function store(Request $request)
     {
-        $providers = new providers();
+        $validate=[
+            'id'=>'required|string|max:100',
+            'brand_provider'=>'required|string|max:100',
+            'web_address'=>'required|string|max:100',
+            'phone'=>'required|string|max:100',
+        ];
+
+        $message=[
+            'required'=>'the :attribute required',
+        ];
+
+        $this->validate($request,$validate,$message);
+
+        $providers = new Provider();
 
         $providers->id = $request->get('id');
         $providers->brand_provider = $request->get('brand_provider');
@@ -38,39 +59,42 @@ class ProviderController extends Controller
 
         $providers->save();
 
-        return redirect('/administrador/provider');
+        return redirect('provider');
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function show(Discussion $id)
+    public function show(Provider $provider)
     {
         //
     }
-/**
+
+    /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function edit(Discussion $id)
+    public function edit($id)
     {
-        $provider = providers::find($id);
-        return view('administrador.provider')->with('provider',$provider);
+        $provider = Provider::find($id);
+        return view('edit.editprovider')->with('provider',$provider);
     }
-/**
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Discussion $id)
+    public function update(Request $request, $id)
     {
-        $providers = providers::find($id);
+        $providers = Provider::find($id);
 
         $providers->brand_provider = $request->get('brand_provider');
         $providers->web_address = $request->get('web_address');
@@ -78,19 +102,18 @@ class ProviderController extends Controller
 
         $providers->save();
 
-        return redirect('/administrador/provider');
+        return redirect('/provider');
     }
-/**
+
+    /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Discussion $id)
+    public function destroy($id)
     {
-        $providers = providers::find($id);
-        $providers->delete();
-        
-        return redirect('/administrador/provider');
+        Provider::destroy($id);
+        return redirect('provider');
     }
 }

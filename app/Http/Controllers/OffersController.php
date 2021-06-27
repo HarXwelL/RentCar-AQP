@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Offers;
 use Illuminate\Http\Request;
 
 class OffersController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $offers = offers::all();
+        $offers['offers']=Offers::simplePaginate(10);
 
-        return view('administrador.offers')->with('offers');
+        return view('administrador.offers',$offers);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -19,8 +26,9 @@ class OffersController extends Controller
      */
     public function create()
     {
-        
+        return view('create.createoffers');
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -29,7 +37,20 @@ class OffersController extends Controller
      */
     public function store(Request $request)
     {
-        $offers = new offers();
+        $validate=[
+            'id'=>'required|string|max:100',
+            'provider_id'=>'required|string|max:100',
+            'offer_name'=>'required|string|max:100',
+            'date'=>'required|date',
+            'discount'=>'required|string|max:100',
+        ];
+        $message=[
+            'required'=>'the :attribute required',
+        ];
+
+        $this->validate($request,$validate,$message);
+
+        $offers = new Offers();
 
         $offers->id = $request->get('id');
         $offers->provider_id = $request->get('provider_id');
@@ -39,39 +60,42 @@ class OffersController extends Controller
 
         $offers->save();
 
-        return redirect('/administrador/offers');
+        return redirect('/Offers');
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Offers  $offers
      * @return \Illuminate\Http\Response
      */
-    public function show(Discussion $id)
+    public function show(Offers $offers)
     {
         //
     }
-/**
+
+    /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Offers  $offers
      * @return \Illuminate\Http\Response
      */
-    public function edit(Discussion $id)
+    public function edit($id)
     {
-        $offer = offers::find($id);
-        return view('administrador.offers')->with('offer',$offer);
+        $offer = Offers::find($id);
+        return view('edit.editoffers')->with('offer',$offer);
     }
-/**
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Offers  $offers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Discussion $id)
+    public function update(Request $request, $id)
     {
-        $offers = offers::find($id);
+        $offers = Offers::find($id);
 
         $offers->id = $request->get('id');
         $offers->provider_id = $request->get('provider_id');
@@ -81,19 +105,18 @@ class OffersController extends Controller
 
         $offers->save();
 
-        return redirect('/administrador/offers');
+        return redirect('/Offers');
     }
-/**
+
+    /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Offers  $offers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Discussion $id)
+    public function destroy($id)
     {
-        $offers = offers::find($id);
-        $offers->delete();
-        
-        return redirect('/administrador/offers');
+        Offers::destroy($id);
+        return redirect('Offers');
     }
 }

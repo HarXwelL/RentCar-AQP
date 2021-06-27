@@ -34,34 +34,49 @@ Route::get('/autoalquiler', function () {
 Route::get('/administrador/reportes', function () {
     return view('clientes.reportes');
 });
-Route::get('/admin/rental', function () {
-    return view('administrador.Rental');
+Route::get('/Rental/create', function () {
+    return view('create.createrental');
 });
-Route::get('/admin/users', function () {
-    return view('administrador.Users');
+Route::get('/auto/create', function () {
+    return view('create.createauto');
 });
-Route::get('/admin/auto', 'App\Http\Controllers\AutoController@index');
-
-Route::get('/admin/review', function () {
-    return view('administrador.review');
+Route::get('/offers/create', function () {
+    return view('create.createoffers');
 });
-Route::get('/admin/provider', function () {
-    return view('administrador.provider');
+Route::get('/provider/create', function () {
+    return view('create.createprovider');
 });
-Route::get('/admin/offers', function () {
-    return view('administrador.offers');
+Route::get('/review/create', function () {
+    return view('create.createreview');
+});
+Route::get('/Users/create', function () {
+    return view('create.createusers');
+});
+Route::get('/Rental/edit', function () {
+    return view('edit.editrental');
+});
+Route::get('/auto/edit', function () {
+    return view('edit.editauto');
+});
+Route::get('/Offers/edit', function () {
+    return view('edit.editoffers');
+});
+Route::get('/provider/edit', function () {
+    return view('edit.editprovider');
+});
+Route::get('/review/edit', function () {
+    return view('edit.editreview');
+});
+Route::get('/Users/edit', function () {
+    return view('edit.editusers');
 });
 
-Route::resource('Rental','App\Http\Controllers\RentalController');
-Route::resource('User','App\Http\Controllers\UserController');
-
-Route::resource('review','App\Http\Controllers\ReviewsController');
-Route::resource('provider','App\Http\Controllers\ProdviderController');
-Route::resource('offers','App\Http\Controllers\OffersController');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('Rental',RentalController::class);
+Route::resource('auto',AutoController::class);
+Route::resource('Offers',OffersController::class);
+Route::resource('provider',ProviderController::class);
+Route::resource('review',ReviewsController::class);
+Route::resource('Users',UserController::class);
 
 Auth::routes();
 

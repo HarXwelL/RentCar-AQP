@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rental;
 use Illuminate\Http\Request;
 
 class RentalController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $rentals = rentals::all();
+        $rentals['rentals']=Rental::simplePaginate(10);
 
-        return view('administrador.Rental')->with('rentals');
+        return view('administrador.Rental',$rentals);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -19,8 +26,9 @@ class RentalController extends Controller
      */
     public function create()
     {
-        
+        return view('create.createrental');
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -29,7 +37,21 @@ class RentalController extends Controller
      */
     public function store(Request $request)
     {
-        $rentals = new rentals();
+        $validate=[
+            'id'=>'required|string|max:100',
+            'user_id'=>'required|string|max:100',
+            'auto_id'=>'required|string|max:100',
+            'payment_type'=>'required|string|max:100',
+            'start_date'=>'required|string|max:100',
+        ];
+
+        $message=[
+            'required'=>'the :attribute required',
+        ];
+
+        $this->validate($request,$validate,$message);
+
+        $rentals = new Rental();
 
         $rentals->id = $request->get('id');
         $rentals->user_id = $request->get('user_id');
@@ -39,39 +61,42 @@ class RentalController extends Controller
 
         $rentals->save();
 
-        return redirect('/administrador/Rental');
+        return redirect('Rental');
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Rental  $rental
      * @return \Illuminate\Http\Response
      */
-    public function show(Discussion $id)
+    public function show(Rental $rental)
     {
         //
     }
-/**
+
+    /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Rental  $rental
      * @return \Illuminate\Http\Response
      */
-    public function edit(Discussion $id)
+    public function edit($id)
     {
-        $rental = rentals::find($id);
-        return view('administrador.Rental')->with('rental',$rental);
+        $rental = Rental::find($id);
+        return view('edit.editrental')->with('rental',$rental);
     }
-/**
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Rental  $rental
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Discussion $id)
+    public function update(Request $request, $id)
     {
-        $rentals = rentals::find($id);
+        $rentals = Rental::find($id);
 
         $rentals->user_id = $request->get('user_id');
         $rentals->auto_id = $request->get('auto_id');
@@ -80,19 +105,18 @@ class RentalController extends Controller
 
         $rentals->save();
 
-        return redirect('/administrador/Rental');
+        return redirect('/Rental');
     }
-/**
+
+    /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Rental  $rental
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Discussion $id)
+    public function destroy($id)
     {
-        $rentals = rentals::find($id);
-        $rentals->delete();
-
-        return redirect('/administrador/Rental');
+        Rental::destroy($id);
+        return redirect('Rental');
     }
 }

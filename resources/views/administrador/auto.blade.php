@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
@@ -14,8 +15,10 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 <head>
- 
-    <table class="table table-dark table-striped">
+ <a href="auto/create" class="btn btn-info">Create</a>
+ <br>
+ <br>
+  <table class="table table-dark table-striped">
   <thead>
     <tr>
       <th scope="col">#id</th>
@@ -37,15 +40,19 @@
         <td>{{$auto->plate_no}}</td>
         <td>{{$auto->price}}</td>
         <td>
-          <form method="POST">
-            <button href="/administrador/{{ $auto->id }}" class="btn btn-primary">{{ __('Edit') }}</button>
-            <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
-          </form>  
+            <a href="{{ url('/auto/'.$auto->id.'/edit') }}" class="btn btn-primary">{{ __('Edit') }}</a>
+            <form action="{{ url('/auto/'.$auto->id ) }}" class="d-inline" method="post">
+            @csrf 
+            {{ method_field('DELETE') }}
+            <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
+            </form>
+      
         </td>
       </tr>
   @endforeach
   </tbody>
 </table>
+{{ $autos->links() }}
 
 @stop
 
