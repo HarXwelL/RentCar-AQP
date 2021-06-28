@@ -20,8 +20,8 @@ class CreateRentalsTable extends Migration
             $table->string('payment_type');
             $table->date('start_date');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('auto_id')->references('id')->on('autos');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('auto_id')->references('id')->on('autos')->onDelete('cascade');
         });
     }
 

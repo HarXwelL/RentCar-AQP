@@ -52,7 +52,7 @@
         <input id="start_date" name="start_date" type="date" value="{{ $rental->start_date }}" class="form-control"  placeholder="start_date" aria-label="start_date" aria-describedby ="basic-addon1">
       </div>
         <button type="submit" class="float-right btn btn-success">{{ __('Edit') }}</button>
-        <button class="float-right btn btn-info">{{ __('Report') }}</button>
+        
     </form>
         <a href="/Rental" class="float-right btn btn-primary">{{ __('Cancel') }}</a>
 @stop

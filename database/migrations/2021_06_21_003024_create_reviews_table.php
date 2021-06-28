@@ -21,8 +21,8 @@ class CreateReviewsTable extends Migration
             $table->text('comment');
             $table->date('date');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('rental_id')->references('id')->on('rentals');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('rental_id')->references('id')->on('rentals')->onDelete('cascade');
         });
     }
 

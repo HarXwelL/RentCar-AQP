@@ -21,7 +21,7 @@ class CreateAutosTable extends Migration
             $table->string('plate_no');
             $table->integer('price');
             $table->timestamps();
-            $table->foreign('provider_id')->references('id')->on('providers');
+            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
         });
     }
 

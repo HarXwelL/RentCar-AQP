@@ -51,7 +51,7 @@
         <input id="password" name="password" type="text" value="{{ $user->password }}" class="form-control"  placeholder="password" aria-label="password" aria-describedby ="basic-addon1">
       </div>
         <button type="submit" class="float-right btn btn-success">{{ __('Edit') }}</button>
-        <button class="float-right btn btn-info">{{ __('Report') }}</button>
+        
     </form>
         <a href="/Users" class="float-right btn btn-primary">{{ __('Cancel') }}</a>
 @stop

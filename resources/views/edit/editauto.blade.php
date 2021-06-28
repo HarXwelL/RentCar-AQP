@@ -58,7 +58,7 @@
         <input id="price" name="price" type="text" value="{{ $auto->price }}" class="form-control"  placeholder="price" aria-label="price" aria-describedby ="basic-addon1">
       </div>
         <button type="submit" class="float-right btn btn-success">{{ __('Edit') }}</button>
-        <button class="float-right btn btn-info">{{ __('Report') }}</button>
+        
     </form>
         <a href="/auto" class="float-right btn btn-primary">{{ __('Cancel') }}</a>
 @stop

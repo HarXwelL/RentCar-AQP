@@ -52,7 +52,7 @@
         <input id="discount" name="discount" type="text" value="{{ $offer->discount }}" class="form-control"  placeholder="discount" aria-label="discount" aria-describedby ="basic-addon1">
       </div>
         <button type="submit" class="float-right btn btn-success">{{ __('Edit') }}</button>
-        <button class="float-right btn btn-info">{{ __('Report') }}</button>
+        
     </form>
         <a href="/Offers" class="float-right btn btn-primary">{{ __('Cancel') }}</a>
 @stop
