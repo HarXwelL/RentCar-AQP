@@ -9,6 +9,6 @@ class ReviewsSeeder extends Seeder
 {
     public function run()
     {
-        Reviews::factory()->count(10)->create();
+        Reviews::factory()->count(100)->create();
     }
 }

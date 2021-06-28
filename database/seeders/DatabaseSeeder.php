@@ -16,8 +16,6 @@ class DatabaseSeeder extends Seeder
             OffersSeeder::class,
             RentalSeeder::class,
             ReviewsSeeder::class,
-            AlquilerMongoSeeder::class,
-            AutosMongoSeeder::class,
         ]);
     }
 }

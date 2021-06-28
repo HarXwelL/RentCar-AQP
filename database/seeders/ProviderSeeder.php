@@ -8,6 +8,6 @@ class ProviderSeeder extends Seeder
 {
     public function run()
     {
-        \App\Models\Provider::factory(10)->create();
+        \App\Models\Provider::factory(100)->create();
     }
 }

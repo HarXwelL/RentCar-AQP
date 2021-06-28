@@ -9,6 +9,6 @@ class OffersSeeder extends Seeder
 {
     public function run()
     {
-        Offers::factory()->count(10)->create();
+        Offers::factory()->count(100)->create();
     }
 }
