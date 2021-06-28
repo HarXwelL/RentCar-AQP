@@ -20,7 +20,7 @@
                 <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Usuarios Registrados</span>
-                    <span class="info-box-number">93,139</span>
+                    <span class="info-box-number">100</span>
                 </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
         </div> 
@@ -30,7 +30,7 @@
                 <span class="info-box-icon bg-green"><i class="fa fa-star-o"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Total de autos</span>
-                    <span class="info-box-number">93,139</span>
+                    <span class="info-box-number">100</span>
                 </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
         </div>   
@@ -40,14 +40,14 @@
                 <span class="info-box-icon bg-orange"><i class="fa fa-star-o"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Total de marcas</span>
-                    <span class="info-box-number">93,139</span>
+                    <span class="info-box-number">100</span>
                 </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
         </div> 
         <br> 
     <section class="container">  
         <div class="row justify-content-between">
-            <div class="col-md-4">
+            <div class="col">
                 <H3>TOP 10 USUARIOS</H3>
 
                 <table class="table table-dark table-striped">
@@ -197,56 +197,7 @@
                     </tbody>
                 </table>
             </div> 
-            <div class="col ">
-            <section class="container">
-                <div id="myfirstchart" style="height: 250px; width: 350px"></div>
-                <script>
-                    new Morris.Line({
-                    // ID of the element in which to draw the chart.
-                    element: 'myfirstchart',
-                    // Chart data records -- each entry in this array corresponds to a point on
-                    // the chart.
-                    data: [
-                        { year: '2008', value: 20 },
-                        { year: '2009', value: 10 },
-                        { year: '2010', value: 5 },
-                        { year: '2011', value: 5 },
-                        { year: '2012', value: 20 }
-                    ],
-                    // The name of the data record attribute that contains x-values.
-                    xkey: 'year',
-                    // A list of names of data record attributes that contain y-values.
-                    ykeys: ['value'],
-                    // Labels for the ykeys -- will be displayed when you hover over the
-                    // chart.
-                    labels: ['Value']
-                    });
-                </script>
-                <div id="myfirstchart" style="height: 250px; width: 350px"></div>
-                <script>
-                    new Morris.Line({
-                    // ID of the element in which to draw the chart.
-                    element: 'myfirstchart',
-                    // Chart data records -- each entry in this array corresponds to a point on
-                    // the chart.
-                    data: [
-                        { year: '2008', value: 20 },
-                        { year: '2009', value: 10 },
-                        { year: '2010', value: 5 },
-                        { year: '2011', value: 5 },
-                        { year: '2012', value: 20 }
-                    ],
-                    // The name of the data record attribute that contains x-values.
-                    xkey: 'year',
-                    // A list of names of data record attributes that contain y-values.
-                    ykeys: ['value'],
-                    // Labels for the ykeys -- will be displayed when you hover over the
-                    // chart.
-                    labels: ['Value']
-                    });
-                </script>
-            </section>
-            </div>   
+               
         </div>
         <div class="container-fluid bg-dark" style="width: 30rem">
         </div>

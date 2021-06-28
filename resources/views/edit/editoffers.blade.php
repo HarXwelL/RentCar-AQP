@@ -54,7 +54,7 @@
         <button type="submit" class="float-right btn btn-success">{{ __('Edit') }}</button>
         
     </form>
-        <a href="/Offers" class="float-right btn btn-primary">{{ __('Cancel') }}</a>
+        <a href="/Offers" class="mr-2 float-right btn btn-primary">{{ __('Cancel') }}</a>
 @stop
 
 @section('css')

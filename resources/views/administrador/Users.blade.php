@@ -18,10 +18,10 @@
   <thead>
     <tr>
       <th scope="col">#id</th>
-      <th scope="col">name</th>
-      <th scope="col">user_type</th>
-      <th scope="col">email</th>
-      <th scope="col">password</th>
+      <th scope="col">Name</th>
+      <th scope="col">User_type</th>
+      <th scope="col">Email</th>
+      <th scope="col">Password</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -34,19 +34,20 @@
         <td>{{$user->email}}</td>
         <td>{{$user->password}}</td>
         <td>
-            <a href="{{ url('/Users/'.$user->id.'/edit') }}" class="btn btn-primary">{{ __('Edit') }}</a>
+            <a href="{{ url('/Users/'.$user->id.'/edit') }}" class="btn btn-primary float-right">{{ __('Edit') }}</a>
             <form action="{{ url('/Users/'.$user->id ) }}" class="d-inline" method="post">
             @csrf 
             {{ method_field('DELETE') }}
-            <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
+            <input class="mr-2 btn btn-danger float-right" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
             </form>
         </td>
       </tr>
     @endforeach
   </tbody>
 </table>
-@stop
 {{ $users->links() }}
+@stop
+
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop

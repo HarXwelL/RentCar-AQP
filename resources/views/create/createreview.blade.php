@@ -46,10 +46,9 @@
         </div>
         <input id="date" name="date" type="date" class="form-control"  placeholder="date" aria-label="date" aria-describedby ="basic-addon1">
       </div>
-        <button type="submit" class="float-right btn btn-success">{{ __('Add') }}</button>
-        <button class="float-right btn btn-info">{{ __('Report') }}</button>
-    </form>
-        <a href="/review" class="float-right btn btn-primary">{{ __('Cancel') }}</a>
+          <button type="submit" class="float-right btn btn-success">{{ __('Add') }}</button>
+        </form>
+            <a href="/auto" class="mr-2 float-right btn btn-primary">{{ __('Cancel') }}</a>
 @stop
 
 @section('css')

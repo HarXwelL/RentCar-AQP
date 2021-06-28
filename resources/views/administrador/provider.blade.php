@@ -21,9 +21,9 @@
   <thead>
     <tr>
       <th scope="col">#id</th>
-      <th scope="col">brand_provider</th>
-      <th scope="col">web_address</th>
-      <th scope="col">phone</th>
+      <th scope="col">Brand_provider</th>
+      <th scope="col">Web_address</th>
+      <th scope="col">Phone</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -35,11 +35,11 @@
         <td>{{$provider->web_address}}</td>
         <td>{{$provider->phone}}</td>
         <td>
-            <a href="{{ url('/provider/'.$provider->id.'/edit') }}" class="btn btn-primary">{{ __('Edit') }}</a>
+            <a href="{{ url('/provider/'.$provider->id.'/edit') }}" class="btn btn-primary float-right">{{ __('Edit') }}</a>
             <form action="{{ url('/provider/'.$provider->id ) }}" class="d-inline" method="post">
             @csrf 
             {{ method_field('DELETE') }}
-            <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
+            <input class="mr-2 btn btn-danger float-right" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
             </form>
         </td>
       </tr>

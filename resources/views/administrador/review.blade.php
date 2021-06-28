@@ -21,11 +21,11 @@
   <thead>
     <tr>
       <th scope="col">#id</th>
-      <th scope="col">user_id</th>
-      <th scope="col">rental_id</th>
-      <th scope="col">qualification</th>
-      <th scope="col">comment</th>
-      <th scope="col">date</th>
+      <th scope="col">User_id</th>
+      <th scope="col">Rental_id</th>
+      <th scope="col">Qualification</th>
+      <th scope="col">Comment</th>
+      <th scope="col">Date</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -39,11 +39,11 @@
         <td>{{$review->comment}}</td>
         <td>{{$review->date}}</td>
         <td>
-            <a href="{{ url('/review/'.$review->id.'/edit') }}" class="btn btn-primary">{{ __('Edit') }}</a>
+            <a href="{{ url('/review/'.$review->id.'/edit') }}" class="btn btn-primary float-right">{{ __('Edit') }}</a>
             <form action="{{ url('/review/'.$review->id ) }}" class="d-inline" method="post">
             @csrf 
             {{ method_field('DELETE') }}
-            <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
+            <input class="mr-2 btn btn-danger float-right" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
             </form>
         </td>
       </tr>

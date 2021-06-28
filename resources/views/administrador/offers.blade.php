@@ -22,10 +22,10 @@
   <thead>
     <tr>
       <th scope="col">#id</th>
-      <th scope="col">provider_id</th>
-      <th scope="col">offer_name</th>
-      <th scope="col">date</th>
-      <th scope="col">discount</th>
+      <th scope="col">Provider_id</th>
+      <th scope="col">Offer_name</th>
+      <th scope="col">Date</th>
+      <th scope="col">Discount</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -38,11 +38,11 @@
         <td>{{$offer->date}}</td>
         <td>{{$offer->discount}}</td>
         <td>
-            <a href="{{ url('/Offers/'.$offer->id.'/edit') }}" class="btn btn-primary">{{ __('Edit') }}</a>
+            <a href="{{ url('/Offers/'.$offer->id.'/edit') }}" class="btn btn-primary float-right">{{ __('Edit') }}</a>
             <form action="{{ url('/Offers/'.$offer->id ) }}" class="d-inline" method="post">
             @csrf 
             {{ method_field('DELETE') }}
-            <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
+            <input class="mr-2 btn btn-danger float-right" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
             </form>
         </td>
       </tr>

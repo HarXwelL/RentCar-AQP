@@ -252,11 +252,7 @@ return [
             'icon'        => 'far fa-fw fa-file',
         ],
         ['header' => 'AJUSTES'],
-        [
-            'text' => 'Perfil',
-            'url'  => 'administrador/configuracion',
-            'icon' => 'fas fa-fw fa-user',
-        ],
+        
         [
             'text'    => 'CRUD',
             'icon'    => 'fas fa-fw fa-share',

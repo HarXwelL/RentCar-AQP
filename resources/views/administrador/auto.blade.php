@@ -22,11 +22,11 @@
   <thead>
     <tr>
       <th scope="col">#id</th>
-      <th scope="col">provider_id</th>
-      <th scope="col">color</th>
-      <th scope="col">capacity</th>
-      <th scope="col">plate_no</th>
-      <th scope="col">price</th>
+      <th scope="col">Provider_id</th>
+      <th scope="col">Color</th>
+      <th scope="col">Capacity</th>
+      <th scope="col">Plate_no</th>
+      <th scope="col">Price</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -40,11 +40,12 @@
         <td>{{$auto->plate_no}}</td>
         <td>{{$auto->price}}</td>
         <td>
-            <a href="{{ url('/auto/'.$auto->id.'/edit') }}" class="btn btn-primary">{{ __('Edit') }}</a>
+        
+            <a href="{{ url('/auto/'.$auto->id.'/edit') }}" class="btn btn-primary float-right">{{ __('Edit') }}</a>
             <form action="{{ url('/auto/'.$auto->id ) }}" class="d-inline" method="post">
             @csrf 
             {{ method_field('DELETE') }}
-            <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
+            <input class="mr-2 btn btn-danger float-right" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
             </form>
       
         </td>

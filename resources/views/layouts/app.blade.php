@@ -39,9 +39,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        <li class="nav-item">
-                                    <a class="nav-link text-light" href="{{ url('/autos') }}">{{ __('beginning') }}</a>
-                                </li>
+                        
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -55,8 +53,11 @@
                                 </li>
                             @endif
                         @else
+                        <li class="nav-item">
+                                    <a class="nav-link text-light" href="{{ url('/autos') }}">{{ __('Begin') }}</a>
+                                </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link text-light dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -77,10 +78,41 @@
                 </div>
             </div>
         </nav>
-
+<!--ETIQUETA-->
         <main class="py-4">
             @yield('content')
         </main>
+        <!-- Footer -->
+        <footer class="page-footer font-small cyan darken-3" style="background-color:#343c44">
+
+        <!-- Footer Elements -->
+        <div class="container">
+
+        <!-- Grid row-->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-12 py-4">
+            <div class="mb-5 flex-center">
+            </div>
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row-->
+
+        </div>
+        <!-- Footer Elements -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3"  style="color:#F7F8FC">© 2021 Copyright:
+        <a href="https://rentcaraqp.tk/"> RentCarAQP.com</a>
+        </div>
+        <!-- Copyright -->
+
+        </footer>
+        <!-- Footer -->
+
     </div>
 </body>
 </html>
