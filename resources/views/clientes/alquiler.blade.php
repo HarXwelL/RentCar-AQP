@@ -31,7 +31,7 @@
 <br>
 <!--Alquiler-->
 <div class="container border border-primary m-10 pb-10">
-    @foreach ($autos as $auto)
+  
         <div class="row">
             <div class="col" style="background-color:#E7E8EA">
             <div>
@@ -39,7 +39,7 @@
                     <img class="card-img" style="width: 100 rem" src="http://i2.cdn.turner.com/money/dam/assets/130423094442-tesla-model-s-620xa.jpg" alt="">
             </div>
             <div>
-                <h3><b>{{ __('I NEED DBS') }}</b></h3>
+                <h3><b>{{ __('I') }}</b></h3>
                 <h5> $$$$$ </h5>
             </div>
             <br>
@@ -75,7 +75,7 @@
             </div>
             </div>
         </div>
-    @endforeach
+    
 </div>  
 <br>
 <br>
