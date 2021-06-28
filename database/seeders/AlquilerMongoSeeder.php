@@ -12,8 +12,11 @@ class AlquilerMongoSeeder extends Seeder
      *
      * @return void
      */
+    protected $connection = 'mongodb';
+
+
     public function run()
     {
-        AlquilerMongo::factory(10)->create();
+        AlquilerMongo::connection('mongodb')->factory(10)->create();
     }
 }
