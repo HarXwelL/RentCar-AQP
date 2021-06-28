@@ -70,7 +70,8 @@ Route::get('/review/edit', function () {
 Route::get('/Users/edit', function () {
     return view('edit.editusers');
 });
-
+Route::resource('AutoCli',AutoCliController::class);
+Route::resource('home',AutoController::class);
 Route::resource('Rental',RentalController::class);
 Route::resource('auto',AutoController::class);
 Route::resource('Offers',OffersController::class);
