@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +79,11 @@ Route::resource('provider',ProviderController::class);
 Route::resource('review',ReviewsController::class);
 Route::resource('Users',UserController::class);
 
+Route::get('/admin', [AdminController::class, 'index'])
+    ->middleware('auth.admin')
+    ->name('admin.index');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

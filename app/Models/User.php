@@ -38,7 +38,13 @@ class User extends Authenticatable
     {
         return 'https://picsum.photos/300/300';
     }
+
     public function adminlte_desc()
+    {
+        return 'administrador';
+    }
+
+    public function adminlte_profile_url()
     {
         return 'administrador';
     }
