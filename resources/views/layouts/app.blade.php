@@ -54,7 +54,7 @@
                             @endif
                         @else
                         <li class="nav-item">
-                                    <a class="nav-link text-light" href="{{ url('/autos') }}">{{ __('Begin') }}</a>
+                                    <a class="nav-link text-light" href="{{ url('/home') }}">{{ __('Begin') }}</a>
                                 </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link text-light dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

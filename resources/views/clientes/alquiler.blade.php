@@ -29,6 +29,8 @@
 <br>
 <br>
 <br>
+<br>
+<br>
 <!--Alquiler-->
 <div class="container border border-primary m-10 pb-10">
   
@@ -39,13 +41,10 @@
                     <img class="card-img" style="width: 100 rem" src="http://i2.cdn.turner.com/money/dam/assets/130423094442-tesla-model-s-620xa.jpg" alt="">
             </div>
             <div>
-                <h3><b>{{ __('I') }}</b></h3>
-                <h5> $$$$$ </h5>
+                <h3><b>{{ __('Price') }}</b></h3>
+                <h5> $ 100 </h5>
             </div>
-            <br>
-            <button type="button" style="float: right" class="btn btn-success" href="/autos/alquiler">Alquilar</button>
-            <br>
-            <br>
+            
             </div>
             <div class="col">
             <div class="text-align-left">
@@ -53,30 +52,30 @@
                     <h4><b>{{ __('DESCRIPTION') }}</b></h4>
                     <br>
                     <div>
-                        <h5 class="text-align-left">{{ __('Provider:') }}</h5>
-                        <h6>base de datos </h6>
+                        <h5 class="text-align-left"><b>{{ __('Provider:') }}</b></h5>
+                        <h6>36 </h6>
                     </div>
                     <div>
-                        <h5 class="text-align-left">{{ __('Capacity:') }}</h5>
-                        <h6>base de datos </h6>
+                        <h5 class="text-align-left"><b>{{ __('Capacity:') }}</b></h5>
+                        <h6>3 </h6>
                     </div>
                     <div>
-                        <h5 class="text-align-left">{{ __('Color:') }}</h5>
-                        <h6>base de datos </h6>
+                        <h5 class="text-align-left"><b>{{ __('Color:') }}</b></h5>
+                        <h6 style="text-transform:uppercase">#bd7462 </h6>
                     </div>
                     <div>
-                        <h5 class="text-align-left">{{ __('Plate number') }}</h5>
-                        <h6>base de datos </h6>
+                        <h5 class="text-align-left"><b>{{ __('Plate number') }}</b></h5>
+                        <h6 style="text-transform:uppercase">p44-0tw </h6>
                     </div>
-                    <div>
-                        <h5 class="text-align-left">{{ __('Price') }}</h5>
-                        <h6>base de datos </h6>
-                    </div>
+                    
             </div>
             </div>
         </div>
     
 </div>  
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
